@@ -164,6 +164,11 @@ namespace MariokartResult
 
 			ResultHistory_DataGridView["RankBar", ResultHistory_DataGridView.RowCount - 1].Value = RankProgressBar(ResultHistory_DataGridView.Rows[0].Cells[3].Size.Width, rank);
 
+
+
+			ResultHistory_DataGridView["Rate", ResultHistory_DataGridView.RowCount - 1].Value = Rate_TextBox.Text;
+
+
 			// コースが選択されていたら選択解除
 			if (SelectCourseNum != 0)
 			{
