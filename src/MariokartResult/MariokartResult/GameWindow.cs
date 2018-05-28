@@ -106,7 +106,7 @@ namespace MariokartResult
 
 		private void Rank_TextBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if (e.KeyChar < '0' || '9' < e.KeyChar)
+			if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
 			{
 				e.Handled = true;
 			}
@@ -114,7 +114,7 @@ namespace MariokartResult
 
 		private void NumberOfPeople_TextBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if (e.KeyChar < '0' || '9' < e.KeyChar)
+			if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
 			{
 				e.Handled = true;
 			}
@@ -122,7 +122,7 @@ namespace MariokartResult
 
 		private void Rate_TextBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if (e.KeyChar < '0' || '9' < e.KeyChar)
+			if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
 			{
 				e.Handled = true;
 			}
