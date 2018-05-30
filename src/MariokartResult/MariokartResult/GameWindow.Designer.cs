@@ -29,6 +29,12 @@
 		private void InitializeComponent()
 		{
 			this.ResultHistory_DataGridView = new System.Windows.Forms.DataGridView();
+			this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Course = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.RankBar = new System.Windows.Forms.DataGridViewImageColumn();
+			this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.controller = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.OK_Button = new System.Windows.Forms.Button();
 			this.Rank_TextBox = new System.Windows.Forms.TextBox();
 			this.Rank_Label = new System.Windows.Forms.Label();
@@ -85,17 +91,13 @@
 			this.CoursePicture3 = new System.Windows.Forms.PictureBox();
 			this.CoursePicture2 = new System.Windows.Forms.PictureBox();
 			this.CoursePicture1 = new System.Windows.Forms.PictureBox();
-			this.RankBar = new System.Windows.Forms.DataGridViewImageColumn();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Course = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.controller = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.controllerTextbox = new System.Windows.Forms.TextBox();
+			this.controllerLabel = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.ResultHistory_DataGridView)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.CoursePicture48)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.CoursePicture47)).BeginInit();
@@ -170,6 +172,61 @@
 			this.ResultHistory_DataGridView.Size = new System.Drawing.Size(483, 970);
 			this.ResultHistory_DataGridView.TabIndex = 1;
 			this.ResultHistory_DataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ResultHistory_DataGridView_CellContentClick);
+			// 
+			// Index
+			// 
+			this.Index.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.Index.Frozen = true;
+			this.Index.HeaderText = "";
+			this.Index.Name = "Index";
+			this.Index.ReadOnly = true;
+			this.Index.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.Index.Width = 19;
+			// 
+			// Course
+			// 
+			this.Course.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+			this.Course.HeaderText = "コース";
+			this.Course.Name = "Course";
+			this.Course.ReadOnly = true;
+			this.Course.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.Course.Width = 120;
+			// 
+			// Rank
+			// 
+			this.Rank.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+			this.Rank.HeaderText = "順位";
+			this.Rank.Name = "Rank";
+			this.Rank.ReadOnly = true;
+			this.Rank.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.Rank.Width = 54;
+			// 
+			// RankBar
+			// 
+			this.RankBar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.RankBar.HeaderText = "順位(割合)";
+			this.RankBar.Name = "RankBar";
+			this.RankBar.ReadOnly = true;
+			this.RankBar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.RankBar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+			// 
+			// Rate
+			// 
+			this.Rate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+			this.Rate.HeaderText = "レート";
+			this.Rate.Name = "Rate";
+			this.Rate.ReadOnly = true;
+			this.Rate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.Rate.Width = 72;
+			// 
+			// controller
+			// 
+			this.controller.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+			this.controller.HeaderText = "コントローラ";
+			this.controller.Name = "controller";
+			this.controller.ReadOnly = true;
+			this.controller.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.controller.Width = 82;
 			// 
 			// OK_Button
 			// 
@@ -722,15 +779,6 @@
 			this.CoursePicture1.TabStop = false;
 			this.CoursePicture1.Click += new System.EventHandler(this.CoursePicture1_Click);
 			// 
-			// RankBar
-			// 
-			this.RankBar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.RankBar.HeaderText = "順位(割合)";
-			this.RankBar.Name = "RankBar";
-			this.RankBar.ReadOnly = true;
-			this.RankBar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.RankBar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-			// 
 			// dataGridViewTextBoxColumn1
 			// 
 			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -739,7 +787,6 @@
 			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
 			this.dataGridViewTextBoxColumn1.ReadOnly = true;
 			this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.dataGridViewTextBoxColumn1.Width = 19;
 			// 
 			// dataGridViewTextBoxColumn2
 			// 
@@ -777,51 +824,21 @@
 			this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
 			this.dataGridViewTextBoxColumn5.Width = 82;
 			// 
-			// Index
+			// controllerTextbox
 			// 
-			this.Index.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.Index.Frozen = true;
-			this.Index.HeaderText = "";
-			this.Index.Name = "Index";
-			this.Index.ReadOnly = true;
-			this.Index.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.Index.Width = 19;
+			this.controllerTextbox.Location = new System.Drawing.Point(741, 960);
+			this.controllerTextbox.Name = "controllerTextbox";
+			this.controllerTextbox.Size = new System.Drawing.Size(100, 19);
+			this.controllerTextbox.TabIndex = 58;
 			// 
-			// Course
+			// controllerLabel
 			// 
-			this.Course.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-			this.Course.HeaderText = "コース";
-			this.Course.Name = "Course";
-			this.Course.ReadOnly = true;
-			this.Course.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.Course.Width = 120;
-			// 
-			// Rank
-			// 
-			this.Rank.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-			this.Rank.HeaderText = "順位";
-			this.Rank.Name = "Rank";
-			this.Rank.ReadOnly = true;
-			this.Rank.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.Rank.Width = 54;
-			// 
-			// Rate
-			// 
-			this.Rate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-			this.Rate.HeaderText = "レート";
-			this.Rate.Name = "Rate";
-			this.Rate.ReadOnly = true;
-			this.Rate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.Rate.Width = 72;
-			// 
-			// controller
-			// 
-			this.controller.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-			this.controller.HeaderText = "コントローラ";
-			this.controller.Name = "controller";
-			this.controller.ReadOnly = true;
-			this.controller.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.controller.Width = 82;
+			this.controllerLabel.AutoSize = true;
+			this.controllerLabel.Location = new System.Drawing.Point(764, 945);
+			this.controllerLabel.Name = "controllerLabel";
+			this.controllerLabel.Size = new System.Drawing.Size(57, 12);
+			this.controllerLabel.TabIndex = 59;
+			this.controllerLabel.Text = "コントローラ";
 			// 
 			// GameWindow
 			// 
@@ -829,6 +846,8 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
 			this.ClientSize = new System.Drawing.Size(1904, 991);
+			this.Controls.Add(this.controllerLabel);
+			this.Controls.Add(this.controllerTextbox);
 			this.Controls.Add(this.CoursePicture48);
 			this.Controls.Add(this.CoursePicture47);
 			this.Controls.Add(this.CoursePicture46);
@@ -1015,5 +1034,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+		private System.Windows.Forms.TextBox controllerTextbox;
+		private System.Windows.Forms.Label controllerLabel;
 	}
 }
