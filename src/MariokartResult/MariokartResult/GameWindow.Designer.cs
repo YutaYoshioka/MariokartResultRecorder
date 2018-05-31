@@ -230,9 +230,10 @@
 			// 
 			// OK_Button
 			// 
-			this.OK_Button.Location = new System.Drawing.Point(660, 958);
+			this.OK_Button.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.OK_Button.Location = new System.Drawing.Point(765, 944);
 			this.OK_Button.Name = "OK_Button";
-			this.OK_Button.Size = new System.Drawing.Size(75, 23);
+			this.OK_Button.Size = new System.Drawing.Size(75, 34);
 			this.OK_Button.TabIndex = 2;
 			this.OK_Button.Text = "OK";
 			this.OK_Button.UseVisualStyleBackColor = true;
@@ -240,62 +241,68 @@
 			// 
 			// Rank_TextBox
 			// 
-			this.Rank_TextBox.Location = new System.Drawing.Point(510, 960);
+			this.Rank_TextBox.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.Rank_TextBox.Location = new System.Drawing.Point(506, 945);
 			this.Rank_TextBox.Name = "Rank_TextBox";
-			this.Rank_TextBox.Size = new System.Drawing.Size(27, 19);
+			this.Rank_TextBox.Size = new System.Drawing.Size(44, 31);
 			this.Rank_TextBox.TabIndex = 3;
 			this.Rank_TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Rank_TextBox_KeyPress);
 			// 
 			// Rank_Label
 			// 
 			this.Rank_Label.AutoSize = true;
-			this.Rank_Label.Location = new System.Drawing.Point(508, 945);
+			this.Rank_Label.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.Rank_Label.Location = new System.Drawing.Point(501, 918);
 			this.Rank_Label.Name = "Rank_Label";
-			this.Rank_Label.Size = new System.Drawing.Size(29, 12);
+			this.Rank_Label.Size = new System.Drawing.Size(58, 24);
 			this.Rank_Label.TabIndex = 4;
 			this.Rank_Label.Text = "順位";
 			// 
 			// NumberOfPeople_Label
 			// 
 			this.NumberOfPeople_Label.AutoSize = true;
-			this.NumberOfPeople_Label.Location = new System.Drawing.Point(550, 945);
+			this.NumberOfPeople_Label.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.NumberOfPeople_Label.Location = new System.Drawing.Point(577, 918);
 			this.NumberOfPeople_Label.Name = "NumberOfPeople_Label";
-			this.NumberOfPeople_Label.Size = new System.Drawing.Size(29, 12);
+			this.NumberOfPeople_Label.Size = new System.Drawing.Size(58, 24);
 			this.NumberOfPeople_Label.TabIndex = 6;
 			this.NumberOfPeople_Label.Text = "人数";
 			// 
 			// NumberOfPeople_TextBox
 			// 
-			this.NumberOfPeople_TextBox.Location = new System.Drawing.Point(552, 960);
+			this.NumberOfPeople_TextBox.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.NumberOfPeople_TextBox.Location = new System.Drawing.Point(581, 945);
 			this.NumberOfPeople_TextBox.Name = "NumberOfPeople_TextBox";
-			this.NumberOfPeople_TextBox.Size = new System.Drawing.Size(27, 19);
+			this.NumberOfPeople_TextBox.Size = new System.Drawing.Size(48, 31);
 			this.NumberOfPeople_TextBox.TabIndex = 5;
 			this.NumberOfPeople_TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOfPeople_TextBox_KeyPress);
 			// 
 			// Label1
 			// 
 			this.Label1.AutoSize = true;
-			this.Label1.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.Label1.Location = new System.Drawing.Point(537, 963);
+			this.Label1.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.Label1.Location = new System.Drawing.Point(550, 945);
 			this.Label1.Name = "Label1";
-			this.Label1.Size = new System.Drawing.Size(15, 15);
+			this.Label1.Size = new System.Drawing.Size(28, 29);
 			this.Label1.TabIndex = 7;
 			this.Label1.Text = "/";
 			// 
 			// Rate_Label
 			// 
 			this.Rate_Label.AutoSize = true;
-			this.Rate_Label.Location = new System.Drawing.Point(598, 945);
+			this.Rate_Label.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.Rate_Label.Location = new System.Drawing.Point(664, 918);
 			this.Rate_Label.Name = "Rate_Label";
-			this.Rate_Label.Size = new System.Drawing.Size(32, 12);
+			this.Rate_Label.Size = new System.Drawing.Size(65, 24);
 			this.Rate_Label.TabIndex = 9;
 			this.Rate_Label.Text = "レート";
 			// 
 			// Rate_TextBox
 			// 
-			this.Rate_TextBox.Location = new System.Drawing.Point(585, 960);
+			this.Rate_TextBox.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.Rate_TextBox.Location = new System.Drawing.Point(640, 945);
 			this.Rate_TextBox.Name = "Rate_TextBox";
-			this.Rate_TextBox.Size = new System.Drawing.Size(58, 19);
+			this.Rate_TextBox.Size = new System.Drawing.Size(119, 31);
 			this.Rate_TextBox.TabIndex = 8;
 			this.Rate_TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Rate_TextBox_KeyPress);
 			// 
@@ -826,7 +833,7 @@
 			// 
 			// controllerTextbox
 			// 
-			this.controllerTextbox.Location = new System.Drawing.Point(741, 960);
+			this.controllerTextbox.Location = new System.Drawing.Point(850, 957);
 			this.controllerTextbox.Name = "controllerTextbox";
 			this.controllerTextbox.Size = new System.Drawing.Size(100, 19);
 			this.controllerTextbox.TabIndex = 58;
@@ -834,7 +841,7 @@
 			// controllerLabel
 			// 
 			this.controllerLabel.AutoSize = true;
-			this.controllerLabel.Location = new System.Drawing.Point(764, 945);
+			this.controllerLabel.Location = new System.Drawing.Point(870, 942);
 			this.controllerLabel.Name = "controllerLabel";
 			this.controllerLabel.Size = new System.Drawing.Size(57, 12);
 			this.controllerLabel.TabIndex = 59;
