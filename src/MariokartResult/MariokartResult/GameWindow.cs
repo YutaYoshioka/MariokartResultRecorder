@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FileIO;
 
 namespace MariokartResult
 {
@@ -167,7 +168,7 @@ namespace MariokartResult
 			ResultHistory_DataGridView["Rate", ResultHistory_DataGridView.RowCount - 1].Value = Rate_TextBox.Text;
 
 			ResultHistory_DataGridView["controller", ResultHistory_DataGridView.RowCount - 1].Value = controllerTextbox.Text;
-			
+
 
 			// コースが選択されていたら選択解除
 			if (SelectCourseNum != 0)
@@ -193,6 +194,40 @@ namespace MariokartResult
 
 
 
+		}
+
+		/// <summary>
+		/// セーブして終了
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void SaveEndButton_Click(object sender, EventArgs e)
+		{
+			var historyData = new List<List<string>>();
+			historyData.Add(new List<string>());
+			for (int i = 0; i < ResultHistory_DataGridView.ColumnCount; i++)
+			{
+				historyData[0].Add(ResultHistory_DataGridView.Columns[i].HeaderText);
+			}
+
+			for (int i = 0; i < ResultHistory_DataGridView.RowCount; i++)
+			{
+				historyData.Add(new List<string>());
+				for (int j = 0; j < ResultHistory_DataGridView.ColumnCount; j++)
+				{
+					if (ResultHistory_DataGridView[j, i].Value == null)
+					{
+						historyData[i + 1].Add("");
+					}
+					else
+					{
+						historyData[i + 1].Add(ResultHistory_DataGridView[j, i].Value.ToString());
+					}
+				}
+			}
+
+			csvIO.WriteStrings(DateTime.Now.Ticks.ToString() + ".csv", historyData, ",");
+			Close();
 		}
 
 		/// <summary>

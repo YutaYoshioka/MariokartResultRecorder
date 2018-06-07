@@ -29,12 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.ResultHistory_DataGridView = new System.Windows.Forms.DataGridView();
-			this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Course = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.RankBar = new System.Windows.Forms.DataGridViewImageColumn();
-			this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.controller = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.OK_Button = new System.Windows.Forms.Button();
 			this.Rank_TextBox = new System.Windows.Forms.TextBox();
 			this.Rank_Label = new System.Windows.Forms.Label();
@@ -98,6 +92,13 @@
 			this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.controllerTextbox = new System.Windows.Forms.TextBox();
 			this.controllerLabel = new System.Windows.Forms.Label();
+			this.SaveEndButton = new System.Windows.Forms.Button();
+			this.controller = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.RankBar = new System.Windows.Forms.DataGridViewImageColumn();
+			this.Rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Course = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.ResultHistory_DataGridView)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.CoursePicture48)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.CoursePicture47)).BeginInit();
@@ -172,61 +173,6 @@
 			this.ResultHistory_DataGridView.Size = new System.Drawing.Size(483, 970);
 			this.ResultHistory_DataGridView.TabIndex = 1;
 			this.ResultHistory_DataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ResultHistory_DataGridView_CellContentClick);
-			// 
-			// Index
-			// 
-			this.Index.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.Index.Frozen = true;
-			this.Index.HeaderText = "";
-			this.Index.Name = "Index";
-			this.Index.ReadOnly = true;
-			this.Index.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.Index.Width = 19;
-			// 
-			// Course
-			// 
-			this.Course.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-			this.Course.HeaderText = "コース";
-			this.Course.Name = "Course";
-			this.Course.ReadOnly = true;
-			this.Course.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.Course.Width = 120;
-			// 
-			// Rank
-			// 
-			this.Rank.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-			this.Rank.HeaderText = "順位";
-			this.Rank.Name = "Rank";
-			this.Rank.ReadOnly = true;
-			this.Rank.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.Rank.Width = 54;
-			// 
-			// RankBar
-			// 
-			this.RankBar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.RankBar.HeaderText = "順位(割合)";
-			this.RankBar.Name = "RankBar";
-			this.RankBar.ReadOnly = true;
-			this.RankBar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.RankBar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-			// 
-			// Rate
-			// 
-			this.Rate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-			this.Rate.HeaderText = "レート";
-			this.Rate.Name = "Rate";
-			this.Rate.ReadOnly = true;
-			this.Rate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.Rate.Width = 72;
-			// 
-			// controller
-			// 
-			this.controller.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-			this.controller.HeaderText = "コントローラ";
-			this.controller.Name = "controller";
-			this.controller.ReadOnly = true;
-			this.controller.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-			this.controller.Width = 82;
 			// 
 			// OK_Button
 			// 
@@ -847,12 +793,79 @@
 			this.controllerLabel.TabIndex = 59;
 			this.controllerLabel.Text = "コントローラ";
 			// 
+			// SaveEndButton
+			// 
+			this.SaveEndButton.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.SaveEndButton.Location = new System.Drawing.Point(1005, 941);
+			this.SaveEndButton.Name = "SaveEndButton";
+			this.SaveEndButton.Size = new System.Drawing.Size(176, 35);
+			this.SaveEndButton.TabIndex = 60;
+			this.SaveEndButton.Text = "セーブして終了";
+			this.SaveEndButton.UseVisualStyleBackColor = true;
+			this.SaveEndButton.Click += new System.EventHandler(this.SaveEndButton_Click);
+			// 
+			// controller
+			// 
+			this.controller.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+			this.controller.HeaderText = "コントローラ";
+			this.controller.Name = "controller";
+			this.controller.ReadOnly = true;
+			this.controller.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.controller.Width = 82;
+			// 
+			// Rate
+			// 
+			this.Rate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+			this.Rate.HeaderText = "レート";
+			this.Rate.Name = "Rate";
+			this.Rate.ReadOnly = true;
+			this.Rate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.Rate.Width = 72;
+			// 
+			// RankBar
+			// 
+			this.RankBar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.RankBar.HeaderText = "順位(割合)";
+			this.RankBar.Name = "RankBar";
+			this.RankBar.ReadOnly = true;
+			this.RankBar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.RankBar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+			// 
+			// Rank
+			// 
+			this.Rank.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+			this.Rank.HeaderText = "順位";
+			this.Rank.Name = "Rank";
+			this.Rank.ReadOnly = true;
+			this.Rank.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.Rank.Width = 54;
+			// 
+			// Course
+			// 
+			this.Course.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+			this.Course.HeaderText = "コース";
+			this.Course.Name = "Course";
+			this.Course.ReadOnly = true;
+			this.Course.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.Course.Width = 120;
+			// 
+			// Index
+			// 
+			this.Index.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.Index.Frozen = true;
+			this.Index.HeaderText = "";
+			this.Index.Name = "Index";
+			this.Index.ReadOnly = true;
+			this.Index.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.Index.Width = 19;
+			// 
 			// GameWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
 			this.ClientSize = new System.Drawing.Size(1904, 991);
+			this.Controls.Add(this.SaveEndButton);
 			this.Controls.Add(this.controllerLabel);
 			this.Controls.Add(this.controllerTextbox);
 			this.Controls.Add(this.CoursePicture48);
@@ -1030,12 +1043,6 @@
 		private System.Windows.Forms.PictureBox CoursePicture35;
 		private System.Windows.Forms.PictureBox CoursePicture34;
 		private System.Windows.Forms.PictureBox CoursePicture33;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Index;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Course;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Rank;
-		private System.Windows.Forms.DataGridViewImageColumn RankBar;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Rate;
-		private System.Windows.Forms.DataGridViewTextBoxColumn controller;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -1043,5 +1050,12 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
 		private System.Windows.Forms.TextBox controllerTextbox;
 		private System.Windows.Forms.Label controllerLabel;
+		private System.Windows.Forms.Button SaveEndButton;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Index;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Course;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Rank;
+		private System.Windows.Forms.DataGridViewImageColumn RankBar;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Rate;
+		private System.Windows.Forms.DataGridViewTextBoxColumn controller;
 	}
 }
