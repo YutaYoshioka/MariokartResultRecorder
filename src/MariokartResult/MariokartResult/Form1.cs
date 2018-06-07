@@ -19,7 +19,7 @@ namespace MariokartResult
 
 		private void NEW_GAME_button_Click(object sender, EventArgs e)
 		{
-			GameWindow GameWindow = new GameWindow();
+			var GameWindow = new GameWindow();
 			GameWindow.Show();
 		}
 

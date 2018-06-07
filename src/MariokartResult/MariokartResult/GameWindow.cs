@@ -175,8 +175,8 @@ namespace MariokartResult
 			{
 				PictureBox pic;
 				Graphics g;
-				System.Reflection.Assembly myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-				Bitmap bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
+				var myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+				var bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
 				g = Graphics.FromImage(bmp);
 				g.ResetTransform();
 				g.TranslateTransform(4, 4);
@@ -191,9 +191,6 @@ namespace MariokartResult
 			// 順位をリセット
 			Rank_TextBox.Text = "";
 			NumberOfPeople_TextBox.Text = "";
-
-
-
 		}
 
 		/// <summary>
@@ -203,17 +200,19 @@ namespace MariokartResult
 		/// <param name="e"></param>
 		private void SaveEndButton_Click(object sender, EventArgs e)
 		{
-			var historyData = new List<List<string>>();
-			historyData.Add(new List<string>());
-			for (int i = 0; i < ResultHistory_DataGridView.ColumnCount; i++)
+			var historyData = new List<List<string>>
+			{
+				new List<string>()
+			};
+			for (var i = 0; i < ResultHistory_DataGridView.ColumnCount; i++)
 			{
 				historyData[0].Add(ResultHistory_DataGridView.Columns[i].HeaderText);
 			}
 
-			for (int i = 0; i < ResultHistory_DataGridView.RowCount; i++)
+			for (var i = 0; i < ResultHistory_DataGridView.RowCount; i++)
 			{
 				historyData.Add(new List<string>());
-				for (int j = 0; j < ResultHistory_DataGridView.ColumnCount; j++)
+				for (var j = 0; j < ResultHistory_DataGridView.ColumnCount; j++)
 				{
 					if (ResultHistory_DataGridView[j, i].Value == null)
 					{
@@ -249,16 +248,16 @@ namespace MariokartResult
 
 		private void CoursePictureLoad()
 		{
-			System.Reflection.Assembly myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+			var myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
 
-			for (int i = 0; i < 48; i++)
+			for (var i = 0; i < 48; i++)
 			{
-				Bitmap bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
-				Graphics g = Graphics.FromImage(bmp);
+				var bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
+				var g = Graphics.FromImage(bmp);
 				g.ResetTransform();
 				g.TranslateTransform(4, 4);
 				g.DrawImage(Image.FromStream(myAssembly.GetManifestResourceStream("MariokartResult.Resources." + i + ".png")), new Rectangle(0, 0, 166, 113));
-				PictureBox pic = CoursePictureNum(i + 1);
+				var pic = CoursePictureNum(i + 1);
 				pic.Image = bmp;
 				CoursePictureNum(i + 1, pic);
 			}
@@ -276,8 +275,8 @@ namespace MariokartResult
 			// 他にコースが選択されていたら選択解除
 			if (SelectCourseNum != 0)
 			{
-				System.Reflection.Assembly myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-				Bitmap bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
+				var myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+				var bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
 				g = Graphics.FromImage(bmp);
 				g.ResetTransform();
 				g.TranslateTransform(4, 4);
