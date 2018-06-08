@@ -84,8 +84,6 @@ namespace MariokartResult
 
 		private void GameWindow_FormClosing(object sender, FormClosingEventArgs e)
 		{
-
-			/*
 			if (MessageBox.Show(
 				"入力した値は保存されません。終了してもよろしいですか？", "確認",
 				MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation
@@ -97,7 +95,6 @@ namespace MariokartResult
 			{
 				Properties.Settings.Default.Save();
 			}
-			*/
 		}
 
 		private void ResultHistory_DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
