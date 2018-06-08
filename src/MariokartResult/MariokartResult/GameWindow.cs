@@ -191,6 +191,7 @@ namespace MariokartResult
 			// 順位をリセット
 			Rank_TextBox.Text = "";
 			NumberOfPeople_TextBox.Text = "";
+			Rate_TextBox.Text = "";
 		}
 
 		/// <summary>
