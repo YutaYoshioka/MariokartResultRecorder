@@ -82,18 +82,23 @@ namespace MariokartResult
 			"N64 キノピオハイウェイ",
 		 };
 
+		bool save = false;
+
 		private void GameWindow_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (MessageBox.Show(
-				"入力した値は保存されません。終了してもよろしいですか？", "確認",
-				MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation
-				) == DialogResult.No)
+			if (!save)
 			{
-				e.Cancel = true;
-			}
-			else
-			{
-				Properties.Settings.Default.Save();
+				if (MessageBox.Show(
+					"入力した値は保存されません。終了してもよろしいですか？", "確認",
+					MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation
+					) == DialogResult.No)
+				{
+					e.Cancel = true;
+				}
+				else
+				{
+					Properties.Settings.Default.Save();
+				}
 			}
 		}
 
@@ -224,6 +229,7 @@ namespace MariokartResult
 			}
 
 			csvIO.WriteStrings(DateTime.Now.Ticks.ToString() + ".csv", historyData, ",");
+			save = true;
 			Close();
 		}
 
