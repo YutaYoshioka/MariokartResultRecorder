@@ -173,6 +173,7 @@
 			this.ResultHistory_DataGridView.Size = new System.Drawing.Size(483, 970);
 			this.ResultHistory_DataGridView.TabIndex = 1;
 			this.ResultHistory_DataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ResultHistory_DataGridView_CellContentClick);
+			this.ResultHistory_DataGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ResultHistory_DataGridView_MouseClick);
 			// 
 			// OK_Button
 			// 

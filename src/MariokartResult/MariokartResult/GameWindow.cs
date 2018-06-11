@@ -28,9 +28,9 @@ namespace MariokartResult
 		/// <summary>
 		/// 現在選択中のコース
 		/// </summary>
-		private static int SelectCourseNum = 0;
+		private static int selectCourseNum = 0;
 
-		private static string[] CourseName = {
+		private static string[] courseName = {
 			"未選択",
 			"マリオカートスタジアム",
 			"ウォーターパーク",
@@ -146,7 +146,7 @@ namespace MariokartResult
 				}
 			}
 
-			ResultHistory_DataGridView["Course", ResultHistory_DataGridView.RowCount - 1].Value = CourseName[SelectCourseNum];
+			ResultHistory_DataGridView["Course", ResultHistory_DataGridView.RowCount - 1].Value = courseName[selectCourseNum];
 
 			float rank;
 			if (Rank_TextBox.Text != "" && NumberOfPeople_TextBox.Text != "")
@@ -173,7 +173,7 @@ namespace MariokartResult
 
 
 			// コースが選択されていたら選択解除
-			if (SelectCourseNum != 0)
+			if (selectCourseNum != 0)
 			{
 				PictureBox pic;
 				Graphics g;
@@ -182,13 +182,13 @@ namespace MariokartResult
 				g = Graphics.FromImage(bmp);
 				g.ResetTransform();
 				g.TranslateTransform(4, 4);
-				g.DrawImage(Image.FromStream(myAssembly.GetManifestResourceStream("MariokartResult.Resources." + (SelectCourseNum - 1) + ".png")), new Rectangle(0, 0, 166, 113));
-				pic = CoursePictureNum(SelectCourseNum);
+				g.DrawImage(Image.FromStream(myAssembly.GetManifestResourceStream("MariokartResult.Resources." + (selectCourseNum - 1) + ".png")), new Rectangle(0, 0, 166, 113));
+				pic = CoursePictureNum(selectCourseNum);
 				pic.Image = bmp;
-				CoursePictureNum(SelectCourseNum, pic);
-				CoursePictureRefresh(SelectCourseNum);
+				CoursePictureNum(selectCourseNum, pic);
+				CoursePictureRefresh(selectCourseNum);
 			}
-			SelectCourseNum = 0;
+			selectCourseNum = 0;
 
 			// 順位をリセット
 			Rank_TextBox.Text = "";
@@ -277,18 +277,18 @@ namespace MariokartResult
 			Graphics g;
 
 			// 他にコースが選択されていたら選択解除
-			if (SelectCourseNum != 0)
+			if (selectCourseNum != 0)
 			{
 				var myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
 				var bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
 				g = Graphics.FromImage(bmp);
 				g.ResetTransform();
 				g.TranslateTransform(4, 4);
-				g.DrawImage(Image.FromStream(myAssembly.GetManifestResourceStream("MariokartResult.Resources." + (SelectCourseNum - 1) + ".png")), new Rectangle(0, 0, 166, 113));
-				pic = CoursePictureNum(SelectCourseNum);
+				g.DrawImage(Image.FromStream(myAssembly.GetManifestResourceStream("MariokartResult.Resources." + (selectCourseNum - 1) + ".png")), new Rectangle(0, 0, 166, 113));
+				pic = CoursePictureNum(selectCourseNum);
 				pic.Image = bmp;
-				CoursePictureNum(SelectCourseNum, pic);
-				CoursePictureRefresh(SelectCourseNum);
+				CoursePictureNum(selectCourseNum, pic);
+				CoursePictureRefresh(selectCourseNum);
 			}
 			pic = CoursePictureNum(num);
 			g = Graphics.FromImage(pic.Image);
@@ -298,7 +298,42 @@ namespace MariokartResult
 			g.DrawLine(new Pen(Color.FromArgb(0, 255, 255), 4), 170, 4, 170, 118);
 			CoursePictureNum(num, pic);
 			CoursePictureRefresh(num);
-			SelectCourseNum = num;
+			selectCourseNum = num;
+		}
+
+		// 編集中の行インデックス
+		int changeRows = 0;
+
+		/// <summary>
+		/// DataGridViewをクリックされたときの処理
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void ResultHistory_DataGridView_MouseClick(object sender, MouseEventArgs e)
+		{
+			// 右クリック
+			if(e.Button == MouseButtons.Right)
+			{
+				var hit = ResultHistory_DataGridView.HitTest(e.X, e.Y);
+				// セルの上でクリックされていたとき
+				if(hit.Type == DataGridViewHitTestType.Cell)
+				{
+					if(changeRows != 0)
+					{
+						ResultHistory_DataGridView.Rows[changeRows].DefaultCellStyle.BackColor = ResultHistory_DataGridView.DefaultCellStyle.BackColor;
+					}
+					ResultHistory_DataGridView.Rows[hit.RowIndex].DefaultCellStyle.BackColor = Color.Gold;
+					changeRows = hit.RowIndex;
+				}
+				else
+				{
+					if (changeRows != 0)
+					{
+						ResultHistory_DataGridView.Rows[changeRows].DefaultCellStyle.BackColor = ResultHistory_DataGridView.DefaultCellStyle.BackColor;
+						changeRows = 0;
+					}
+				}
+			}
 		}
 
 		private void CoursePicture1_Click(object sender, EventArgs e)
