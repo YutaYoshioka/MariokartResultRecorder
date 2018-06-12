@@ -133,67 +133,134 @@ namespace MariokartResult
 
 		private void OK_Button_Click(object sender, EventArgs e)
 		{
-			ResultHistory_DataGridView.Rows.Add();
-
-			ResultHistory_DataGridView["Index", ResultHistory_DataGridView.RowCount - 1].Value = ResultHistory_DataGridView.RowCount;
-
-			if (Rank_TextBox.Text != "")
+			if (changeRows == -1)
 			{
-				ResultHistory_DataGridView["Rank", ResultHistory_DataGridView.RowCount - 1].Value = int.Parse(Rank_TextBox.Text).ToString();
-				if (NumberOfPeople_TextBox.Text != "")
+				ResultHistory_DataGridView.Rows.Add();
+
+				ResultHistory_DataGridView["Index", ResultHistory_DataGridView.RowCount - 1].Value = ResultHistory_DataGridView.RowCount;
+
+				if (Rank_TextBox.Text != "")
 				{
-					ResultHistory_DataGridView["Rank", ResultHistory_DataGridView.RowCount - 1].Value += "/" + int.Parse(NumberOfPeople_TextBox.Text).ToString();
+					ResultHistory_DataGridView["Rank", ResultHistory_DataGridView.RowCount - 1].Value = int.Parse(Rank_TextBox.Text).ToString();
+					if (NumberOfPeople_TextBox.Text != "")
+					{
+						ResultHistory_DataGridView["Rank", ResultHistory_DataGridView.RowCount - 1].Value += "/" + int.Parse(NumberOfPeople_TextBox.Text).ToString();
+					}
 				}
-			}
 
-			ResultHistory_DataGridView["Course", ResultHistory_DataGridView.RowCount - 1].Value = courseName[selectCourseNum];
+				ResultHistory_DataGridView["Course", ResultHistory_DataGridView.RowCount - 1].Value = courseName[selectCourseNum];
 
-			float rank;
-			if (Rank_TextBox.Text != "" && NumberOfPeople_TextBox.Text != "")
-			{
-				if (int.Parse(Rank_TextBox.Text) > 0 && int.Parse(NumberOfPeople_TextBox.Text) > 0 && int.Parse(Rank_TextBox.Text) <= int.Parse(NumberOfPeople_TextBox.Text))
+				float rank;
+				if (Rank_TextBox.Text != "" && NumberOfPeople_TextBox.Text != "")
 				{
-					rank = (float)int.Parse(Rank_TextBox.Text) / int.Parse(NumberOfPeople_TextBox.Text);
+					if (int.Parse(Rank_TextBox.Text) > 0 && int.Parse(NumberOfPeople_TextBox.Text) > 0 && int.Parse(Rank_TextBox.Text) <= int.Parse(NumberOfPeople_TextBox.Text))
+					{
+						rank = (float)int.Parse(Rank_TextBox.Text) / int.Parse(NumberOfPeople_TextBox.Text);
+					}
+					else
+					{
+						rank = 1;
+					}
 				}
 				else
 				{
 					rank = 1;
 				}
+
+				ResultHistory_DataGridView["RankBar", ResultHistory_DataGridView.RowCount - 1].Value = RankProgressBar(ResultHistory_DataGridView.Rows[0].Cells[3].Size.Width, rank);
+
+				ResultHistory_DataGridView["Rate", ResultHistory_DataGridView.RowCount - 1].Value = Rate_TextBox.Text;
+
+				ResultHistory_DataGridView["controller", ResultHistory_DataGridView.RowCount - 1].Value = controllerTextbox.Text;
+
+
+				// コースが選択されていたら選択解除
+				if (selectCourseNum != 0)
+				{
+					PictureBox pic;
+					Graphics g;
+					var myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+					var bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
+					g = Graphics.FromImage(bmp);
+					g.ResetTransform();
+					g.TranslateTransform(4, 4);
+					g.DrawImage(Image.FromStream(myAssembly.GetManifestResourceStream("MariokartResult.Resources." + (selectCourseNum - 1) + ".png")), new Rectangle(0, 0, 166, 113));
+					pic = CoursePictureNum(selectCourseNum);
+					pic.Image = bmp;
+					CoursePictureNum(selectCourseNum, pic);
+					CoursePictureRefresh(selectCourseNum);
+				}
+				selectCourseNum = 0;
+
+				// 順位をリセット
+				Rank_TextBox.Text = "";
+				NumberOfPeople_TextBox.Text = "";
+				Rate_TextBox.Text = "";
 			}
 			else
 			{
-				rank = 1;
+				if (Rank_TextBox.Text != "")
+				{
+					ResultHistory_DataGridView["Rank", changeRows].Value = int.Parse(Rank_TextBox.Text).ToString();
+					if (NumberOfPeople_TextBox.Text != "")
+					{
+						ResultHistory_DataGridView["Rank", changeRows].Value += "/" + int.Parse(NumberOfPeople_TextBox.Text).ToString();
+					}
+				}
+
+				ResultHistory_DataGridView["Course", changeRows].Value = courseName[selectCourseNum];
+
+				float rank;
+				if (Rank_TextBox.Text != "" && NumberOfPeople_TextBox.Text != "")
+				{
+					if (int.Parse(Rank_TextBox.Text) > 0 && int.Parse(NumberOfPeople_TextBox.Text) > 0 && int.Parse(Rank_TextBox.Text) <= int.Parse(NumberOfPeople_TextBox.Text))
+					{
+						rank = (float)int.Parse(Rank_TextBox.Text) / int.Parse(NumberOfPeople_TextBox.Text);
+					}
+					else
+					{
+						rank = 1;
+					}
+				}
+				else
+				{
+					rank = 1;
+				}
+
+				ResultHistory_DataGridView["RankBar", changeRows].Value = RankProgressBar(ResultHistory_DataGridView.Rows[0].Cells[3].Size.Width, rank);
+
+				ResultHistory_DataGridView["Rate", changeRows].Value = Rate_TextBox.Text;
+
+				ResultHistory_DataGridView["controller", changeRows].Value = controllerTextbox.Text;
+
+
+				// コースが選択されていたら選択解除
+				if (selectCourseNum != 0)
+				{
+					PictureBox pic;
+					Graphics g;
+					var myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+					var bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
+					g = Graphics.FromImage(bmp);
+					g.ResetTransform();
+					g.TranslateTransform(4, 4);
+					g.DrawImage(Image.FromStream(myAssembly.GetManifestResourceStream("MariokartResult.Resources." + (selectCourseNum - 1) + ".png")), new Rectangle(0, 0, 166, 113));
+					pic = CoursePictureNum(selectCourseNum);
+					pic.Image = bmp;
+					CoursePictureNum(selectCourseNum, pic);
+					CoursePictureRefresh(selectCourseNum);
+				}
+				selectCourseNum = 0;
+
+				// 順位をリセット
+				Rank_TextBox.Text = "";
+				NumberOfPeople_TextBox.Text = "";
+				Rate_TextBox.Text = "";
+
+				ResultHistory_DataGridView.Rows[changeRows].DefaultCellStyle.BackColor = ResultHistory_DataGridView.DefaultCellStyle.BackColor;
+				changeRows = -1;
+				OK_Button.Text = "OK";
 			}
-
-			ResultHistory_DataGridView["RankBar", ResultHistory_DataGridView.RowCount - 1].Value = RankProgressBar(ResultHistory_DataGridView.Rows[0].Cells[3].Size.Width, rank);
-
-			ResultHistory_DataGridView["Rate", ResultHistory_DataGridView.RowCount - 1].Value = Rate_TextBox.Text;
-
-			ResultHistory_DataGridView["controller", ResultHistory_DataGridView.RowCount - 1].Value = controllerTextbox.Text;
-
-
-			// コースが選択されていたら選択解除
-			if (selectCourseNum != 0)
-			{
-				PictureBox pic;
-				Graphics g;
-				var myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-				var bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
-				g = Graphics.FromImage(bmp);
-				g.ResetTransform();
-				g.TranslateTransform(4, 4);
-				g.DrawImage(Image.FromStream(myAssembly.GetManifestResourceStream("MariokartResult.Resources." + (selectCourseNum - 1) + ".png")), new Rectangle(0, 0, 166, 113));
-				pic = CoursePictureNum(selectCourseNum);
-				pic.Image = bmp;
-				CoursePictureNum(selectCourseNum, pic);
-				CoursePictureRefresh(selectCourseNum);
-			}
-			selectCourseNum = 0;
-
-			// 順位をリセット
-			Rank_TextBox.Text = "";
-			NumberOfPeople_TextBox.Text = "";
-			Rate_TextBox.Text = "";
 		}
 
 		/// <summary>
@@ -302,7 +369,7 @@ namespace MariokartResult
 		}
 
 		// 編集中の行インデックス
-		int changeRows = 0;
+		int changeRows = -1;
 
 		/// <summary>
 		/// DataGridViewをクリックされたときの処理
@@ -318,19 +385,21 @@ namespace MariokartResult
 				// セルの上でクリックされていたとき
 				if(hit.Type == DataGridViewHitTestType.Cell)
 				{
-					if(changeRows != 0)
+					if(changeRows != -1)
 					{
 						ResultHistory_DataGridView.Rows[changeRows].DefaultCellStyle.BackColor = ResultHistory_DataGridView.DefaultCellStyle.BackColor;
 					}
 					ResultHistory_DataGridView.Rows[hit.RowIndex].DefaultCellStyle.BackColor = Color.Gold;
 					changeRows = hit.RowIndex;
+					OK_Button.Text = "編集";
 				}
 				else
 				{
-					if (changeRows != 0)
+					if (changeRows != -1)
 					{
 						ResultHistory_DataGridView.Rows[changeRows].DefaultCellStyle.BackColor = ResultHistory_DataGridView.DefaultCellStyle.BackColor;
-						changeRows = 0;
+						changeRows = -1;
+						OK_Button.Text = "OK";
 					}
 				}
 			}
