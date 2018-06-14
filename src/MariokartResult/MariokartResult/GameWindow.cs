@@ -113,6 +113,10 @@ namespace MariokartResult
 			{
 				e.Handled = true;
 			}
+			if (e.KeyChar == (char)Keys.Enter)
+			{
+				OK_Button_Click(new object(), new EventArgs());
+			}
 		}
 
 		private void NumberOfPeople_TextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -121,6 +125,10 @@ namespace MariokartResult
 			{
 				e.Handled = true;
 			}
+			if (e.KeyChar == (char)Keys.Enter)
+			{
+				OK_Button_Click(new object(), new EventArgs());
+			}
 		}
 
 		private void Rate_TextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -128,6 +136,10 @@ namespace MariokartResult
 			if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
 			{
 				e.Handled = true;
+			}
+			if (e.KeyChar == (char)Keys.Enter)
+			{
+				OK_Button_Click(new object(), new EventArgs());
 			}
 		}
 
@@ -379,13 +391,13 @@ namespace MariokartResult
 		private void ResultHistory_DataGridView_MouseClick(object sender, MouseEventArgs e)
 		{
 			// 右クリック
-			if(e.Button == MouseButtons.Right)
+			if (e.Button == MouseButtons.Right)
 			{
 				var hit = ResultHistory_DataGridView.HitTest(e.X, e.Y);
 				// セルの上でクリックされていたとき
-				if(hit.Type == DataGridViewHitTestType.Cell)
+				if (hit.Type == DataGridViewHitTestType.Cell)
 				{
-					if(changeRows != -1)
+					if (changeRows != -1)
 					{
 						ResultHistory_DataGridView.Rows[changeRows].DefaultCellStyle.BackColor = ResultHistory_DataGridView.DefaultCellStyle.BackColor;
 					}
