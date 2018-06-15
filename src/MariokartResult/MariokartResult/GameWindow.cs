@@ -404,6 +404,8 @@ namespace MariokartResult
 					ResultHistory_DataGridView.Rows[hit.RowIndex].DefaultCellStyle.BackColor = Color.Gold;
 					changeRows = hit.RowIndex;
 					OK_Button.Text = "編集";
+					Rate_TextBox.Text = ResultHistory_DataGridView["Rate", hit.RowIndex].Value.ToString();
+					controllerTextbox.Text = ResultHistory_DataGridView["controller", hit.RowIndex].Value.ToString();
 				}
 				else
 				{
