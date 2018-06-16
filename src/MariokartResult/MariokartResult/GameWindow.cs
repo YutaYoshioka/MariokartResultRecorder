@@ -406,6 +406,31 @@ namespace MariokartResult
 					OK_Button.Text = "編集";
 					Rate_TextBox.Text = ResultHistory_DataGridView["Rate", hit.RowIndex].Value.ToString();
 					controllerTextbox.Text = ResultHistory_DataGridView["controller", hit.RowIndex].Value.ToString();
+					int index = Array.IndexOf(courseName, ResultHistory_DataGridView["Course", hit.RowIndex].Value);
+					if (index == 0)
+					{
+						// コースが選択されていたら選択解除
+						if (selectCourseNum != 0)
+						{
+							PictureBox pic;
+							Graphics g;
+							var myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+							var bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
+							g = Graphics.FromImage(bmp);
+							g.ResetTransform();
+							g.TranslateTransform(4, 4);
+							g.DrawImage(Image.FromStream(myAssembly.GetManifestResourceStream("MariokartResult.Resources." + (selectCourseNum - 1) + ".png")), new Rectangle(0, 0, 166, 113));
+							pic = CoursePictureNum(selectCourseNum);
+							pic.Image = bmp;
+							CoursePictureNum(selectCourseNum, pic);
+							CoursePictureRefresh(selectCourseNum);
+							selectCourseNum = 0;
+						}
+					}
+					else
+					{
+						ClickPicture(index);
+					}
 				}
 				else
 				{
@@ -414,6 +439,25 @@ namespace MariokartResult
 						ResultHistory_DataGridView.Rows[changeRows].DefaultCellStyle.BackColor = ResultHistory_DataGridView.DefaultCellStyle.BackColor;
 						changeRows = -1;
 						OK_Button.Text = "OK";
+						Rate_TextBox.Text = "";
+
+						// コースが選択されていたら選択解除
+						if (selectCourseNum != 0)
+						{
+							PictureBox pic;
+							Graphics g;
+							var myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+							var bmp = new Bitmap(CoursePicture1.Width, CoursePicture1.Height);
+							g = Graphics.FromImage(bmp);
+							g.ResetTransform();
+							g.TranslateTransform(4, 4);
+							g.DrawImage(Image.FromStream(myAssembly.GetManifestResourceStream("MariokartResult.Resources." + (selectCourseNum - 1) + ".png")), new Rectangle(0, 0, 166, 113));
+							pic = CoursePictureNum(selectCourseNum);
+							pic.Image = bmp;
+							CoursePictureNum(selectCourseNum, pic);
+							CoursePictureRefresh(selectCourseNum);
+							selectCourseNum = 0;
+						}
 					}
 				}
 			}
